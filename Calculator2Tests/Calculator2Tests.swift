@@ -9,28 +9,31 @@ import XCTest
 @testable import Calculator2
 
 final class Calculator2Tests: XCTestCase {
-
-    override func setUpWithError() throws {
-        // Put setup code here. This method is called before the invocation of each test method in the class.
+    func testPositiveScenarioForAddCalculation() throws {
+        XCTAssertEqual(Calculation().addTwoInt(of: "1", with: "1"),2)
     }
-
-    override func tearDownWithError() throws {
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
+    func testNegativeScenarioForAddCalculation() throws {
+        XCTAssertEqual(Calculation().addTwoInt(of: "1", with: "-2"),-1)
     }
-
-    func testExample() throws {
-        // This is an example of a functional test case.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
-        // Any test you write for XCTest can be annotated as throws and async.
-        // Mark your test throws to produce an unexpected failure when your test encounters an uncaught error.
-        // Mark your test async to allow awaiting for asynchronous code to complete. Check the results with assertions afterwards.
+    func testPositiveScenarioForSubCalculation() throws {
+        XCTAssertEqual(Calculation().subtractTwoInt(of: "2", with: "1"),1)
     }
-
-    func testPerformanceExample() throws {
-        // This is an example of a performance test case.
-        self.measure {
-            // Put the code you want to measure the time of here.
-        }
+    func testNegativeScenarioForSubCalculation() throws {
+        XCTAssertEqual(Calculation().subtractTwoInt(of: "1", with: "2"),-1)
     }
-
+    func testPositiveScenarioForProdCalculation() throws {
+        XCTAssertEqual(Calculation().multiplyTwoInt(of: "2", with: "2"),4)
+    }
+    func testNegativeScenarioForProdCalculation() throws {
+        XCTAssertEqual(Calculation().multiplyTwoInt(of: "1", with: "-1"),-1)
+    }
+    func testPositiveScenarioForDivCalculation() throws {
+        XCTAssertEqual(Calculation().divideTwoInt(of: "4", with: "2"),2)
+    }
+    func testZeroScenarioForDivCalculation() throws {
+        XCTAssertEqual(Calculation().divideTwoInt(of: "1", with: "0"),Double.greatestFiniteMagnitude)
+    }
+    func testPositiveScenarioForSinCalculation() throws {
+        XCTAssertEqual(Calculation().sinInt(of: "1"),sin(1))
+    }
 }
